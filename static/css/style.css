@@ -1,0 +1,154 @@
+/* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN BASE (TEMA MORADO)
+   ========================================================================== */
+:root {
+    --primary-color: #4a154b;      /* Morado oscuro para encabezados y barra */
+    --accent-color: #8a2be2;       /* Morado violeta brillante para interacción */
+    --accent-hover: #a040f0;       /* Morado suave para efecto hover */
+    --text-color: #2b2b2b;
+    --bg-color: #f4f0f8;           /* Fondo grisáceo con un matiz morado muy suave */
+    --white: #ffffff;
+    --footer-bg: #2d0d30;          /* Morado muy oscuro para el pie de página */
+    --shadow: 0 4px 12px rgba(74, 21, 75, 0.12);
+    --radius: 12px;
+    --transition: all 0.3s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    
+    /* Layout sticky footer */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    text-align: center; /* Centra todo el texto del cuerpo */
+}
+
+/* ==========================================================================
+   2. NAVEGACIÓN CENTRADA
+   ========================================================================== */
+nav {
+    background-color: var(--primary-color);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center; /* Centra los enlaces del menú */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    flex-wrap: wrap;
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a {
+    display: block;
+    color: var(--white);
+    text-decoration: none;
+    padding: 1.2rem 1.5rem;
+    font-weight: 500;
+    transition: var(--transition);
+    border-bottom: 3px solid transparent;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #e0b0ff;
+    border-bottom-color: var(--accent-hover);
+}
+
+/* ==========================================================================
+   3. CONTENIDO PRINCIPAL CENTRADO ({% block content %})
+   ========================================================================== */
+/* Aplica automáticamente al contenido que agregues en las plantillas hijas */
+main, .container, body > :not(nav):not(footer) {
+    flex: 1; /* Empuja el footer hacia la parte inferior */
+    width: 90%;
+    max-width: 900px;
+    margin: 2.5rem auto;
+    padding: 2.5rem;
+    background-color: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    
+    /* Centrado interno */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ajustes de elementos dentro del contenido */
+h1, h2, h3, h4 {
+    color: var(--primary-color);
+    margin-bottom: 1.2rem;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 1rem;
+    max-width: 700px; /* Ancho legible para párrafos centrados */
+    text-align: center;
+}
+
+ul, ol {
+    text-align: left; /* Mantiene listas alineadas para que sean leíbles */
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+/* ==========================================================================
+   4. PIE DE PÁGINA
+   ========================================================================== */
+footer {
+    background-color: var(--footer-bg);
+    color: var(--white);
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin-top: auto;
+    font-size: 0.9rem;
+    border-top: 2px solid var(--accent-color);
+}
+
+/* ==========================================================================
+   5. ADAPTABILIDAD (RESPONSIVE)
+   ========================================================================== */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    nav li {
+        width: 100%;
+    }
+
+    nav a {
+        padding: 0.9rem 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    main, .container, body > :not(nav):not(footer) {
+        width: 95%;
+        margin: 1.5rem auto;
+        padding: 1.5rem;
+    }
+}
